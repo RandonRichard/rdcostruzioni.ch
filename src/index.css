@@ -211,4 +211,14 @@
   .stat-spark:hover::before {
     opacity: 1;
   }
+
+  @keyframes loaderPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+
+  @keyframes loaderBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
 }
