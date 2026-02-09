@@ -1,4 +1,5 @@
 import { Phone, Smartphone, MapPin, Warehouse } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const contactCards = [
   {
@@ -28,10 +29,13 @@ const contactCards = [
 ];
 
 const ContactSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal(0.2);
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal(0.1);
+
   return (
     <section id="contatti" className="section-padding">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+        <div ref={headerRef} className={`text-center mb-16 section-reveal ${headerVisible ? "visible" : ""}`} style={{ transformOrigin: "center" }}>
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
             Contatti
           </p>
@@ -44,14 +48,14 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {contactCards.map((item, i) => (
             <a
               key={i}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="card-glass rounded-lg p-6 flex items-start gap-4 hover:border-primary/40 transition-colors group"
+              className={`card-glass rounded-lg p-6 flex items-start gap-4 hover:border-primary/40 transition-colors group card-reveal reveal-delay-${i + 1} ${cardsVisible ? "visible" : ""}`}
             >
               <div className="bg-primary/10 p-3 rounded-md group-hover:bg-primary/20 transition-colors">
                 <item.icon size={22} className="text-primary" />
