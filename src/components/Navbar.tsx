@@ -4,8 +4,8 @@ import logo from "@/assets/logo-rd.png";
 
 const navItems = [
   { label: "Home", href: "#hero" },
-  { label: "Servizi", href: "#servizi" },
   { label: "Chi Siamo", href: "#chi-siamo" },
+  { label: "Servizi", href: "#servizi" },
   { label: "Contatti", href: "#contatti" },
 ];
 
