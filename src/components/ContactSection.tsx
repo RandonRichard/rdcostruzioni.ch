@@ -1,4 +1,4 @@
-import { Phone, Smartphone, MapPin, Warehouse } from "lucide-react";
+import { Phone, Smartphone, MapPin, Mail } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const contactCards = [
@@ -15,16 +15,16 @@ const contactCards = [
     href: "tel:+41912248012",
   },
   {
-    icon: MapPin,
-    title: "Ufficio",
-    text: "Via Ripari Tondi 10\n6500 Bellinzona",
-    href: "https://maps.google.com/?q=Via+Ripari+Tondi+10,+6500+Bellinzona",
+    icon: Mail,
+    title: "Email",
+    text: "info@rdcostruzioni.ch",
+    href: "mailto:info@rdcostruzioni.ch",
   },
   {
-    icon: Warehouse,
-    title: "Magazzino",
-    text: "Via Pedemonte 21\n6710 Biasca",
-    href: "https://maps.google.com/?q=Via+Pedemonte+21,+6710+Biasca",
+    icon: MapPin,
+    title: "Sede",
+    text: "Via Campagnora 23\n6532 Castione",
+    href: "https://maps.google.com/?q=Via+Campagnora+23,+6532+Castione",
   },
 ];
 
