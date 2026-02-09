@@ -22,7 +22,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center animate-slide-up">
         <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-6">
-          Impresa Costruzioni SAGL — Ticino
+          RD Impresa Costruzioni SAGL — Ticino
         </p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-white">
           Precisione ed{" "}
