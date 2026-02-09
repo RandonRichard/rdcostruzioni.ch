@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-rd.png";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -21,10 +22,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:px-12">
         <button onClick={() => scrollTo("#hero")} className="flex items-center gap-2">
-          <span className="text-2xl font-display font-bold tracking-tight">
-            <span className="text-gradient-gold">RD</span>{" "}
-            <span className="text-foreground">Costruzioni</span>
-          </span>
+          <img src={logo} alt="RD Costruzioni" className="h-10 w-auto" />
         </button>
 
         {/* Desktop */}
