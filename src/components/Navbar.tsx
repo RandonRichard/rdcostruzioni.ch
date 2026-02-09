@@ -21,12 +21,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/40">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:px-12">
-        <button onClick={() => scrollTo("#hero")} className="flex items-center gap-3">
+        <button onClick={() => scrollTo("#hero")} className="flex items-center gap-2">
           <img src={logo} alt="RD Costruzioni" className="h-12 w-auto" />
-          <span className="hidden sm:block font-display text-sm font-bold leading-tight tracking-wide text-foreground">
-            RD IMPRESA COSTRUZIONI SAGL<br />
-            <span className="text-xs font-medium text-muted-foreground tracking-widest">TICINO</span>
-          </span>
         </button>
 
         {/* Desktop */}
