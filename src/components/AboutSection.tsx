@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import { useCountUp } from "@/hooks/use-count-up";
 
 const values = [
   "Qualità dei materiali e delle lavorazioni",
@@ -8,16 +9,27 @@ const values = [
 ];
 
 const stats = [
-  { value: "150+", label: "Progetti Completati" },
-  { value: "15+", label: "Anni di Esperienza" },
-  { value: "100%", label: "Clienti Soddisfatti" },
+  { value: 150, suffix: "+", label: "Progetti Completati" },
+  { value: 15, suffix: "+", label: "Anni di Esperienza" },
+  { value: 100, suffix: "%", label: "Clienti Soddisfatti" },
 ];
+
+const StatCard = ({ value, suffix, label }: { value: number; suffix: string; label: string }) => {
+  const { count, ref } = useCountUp(value);
+  return (
+    <div ref={ref} className="card-glass rounded-lg p-8 text-center hover-lift">
+      <p className="text-4xl md:text-5xl font-display font-bold text-gradient-gold mb-2">
+        {count}{suffix}
+      </p>
+      <p className="text-muted-foreground text-sm font-body">{label}</p>
+    </div>
+  );
+};
 
 const AboutSection = () => {
   return (
     <section id="chi-siamo" className="section-padding bg-secondary/30">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left: text */}
         <div>
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
             Chi Siamo
@@ -42,20 +54,9 @@ const AboutSection = () => {
           </ul>
         </div>
 
-        {/* Right: stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="card-glass rounded-lg p-8 text-center hover-lift"
-            >
-              <p className="text-4xl md:text-5xl font-display font-bold text-gradient-gold mb-2">
-                {stat.value}
-              </p>
-              <p className="text-muted-foreground text-sm font-body">
-                {stat.label}
-              </p>
-            </div>
+            <StatCard key={i} {...stat} />
           ))}
         </div>
       </div>

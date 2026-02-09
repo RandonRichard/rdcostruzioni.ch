@@ -1,6 +1,7 @@
-import serviceSopra from "@/assets/service-soprastruttura.jpg";
-import serviceSotto from "@/assets/service-sottostruttura.jpg";
-import serviceScavi from "@/assets/service-scavi.jpg";
+import serviceSopra from "@/assets/service-soprastruttura-new.jpg";
+import serviceSotto from "@/assets/service-sottostruttura-new.jpg";
+import serviceScavi from "@/assets/service-scavi-new.jpg";
+import serviceRiattazioni from "@/assets/service-riattazioni.jpg";
 import { Building2, Layers, Shovel, Hammer } from "lucide-react";
 
 const services = [
@@ -30,7 +31,7 @@ const services = [
     title: "Riattazioni e Ristrutturazioni",
     description:
       "Interventi di riattazione e ristrutturazione per modernizzare edifici esistenti, migliorare funzionalità, estetica e comfort, o aggiornare singoli elementi strutturali.",
-    image: serviceSopra,
+    image: serviceRiattazioni,
   },
 ];
 
@@ -38,7 +39,6 @@ const ServicesSection = () => {
   return (
     <section id="servizi" className="section-padding">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="mb-16">
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
             Cosa Facciamo
@@ -51,7 +51,6 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
             <div
