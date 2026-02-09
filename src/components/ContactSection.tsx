@@ -1,4 +1,4 @@
-import { Phone, Smartphone, MapPin, Mail } from "lucide-react";
+import { Smartphone, MapPin, Mail } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const contactCards = [
@@ -7,12 +7,6 @@ const contactCards = [
     title: "Cellulare",
     text: "076 682 05 84",
     href: "tel:+41766820584",
-  },
-  {
-    icon: Phone,
-    title: "Ufficio",
-    text: "091 224 80 12",
-    href: "tel:+41912248012",
   },
   {
     icon: Mail,
@@ -48,22 +42,22 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {contactCards.map((item, i) => (
             <a
               key={i}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className={`card-glass rounded-lg p-6 flex items-start gap-4 hover:border-primary/40 transition-colors group card-reveal reveal-delay-${i + 1} ${cardsVisible ? "visible" : ""}`}
+              className={`card-glass rounded-lg aspect-square flex flex-col items-center justify-center text-center gap-4 hover:border-primary/40 transition-colors group card-reveal reveal-delay-${i + 1} ${cardsVisible ? "visible" : ""}`}
             >
-              <div className="bg-primary/10 p-3 rounded-md group-hover:bg-primary/20 transition-colors">
-                <item.icon size={22} className="text-primary" />
+              <div className="bg-primary/10 p-4 rounded-md group-hover:bg-primary/20 transition-colors">
+                <item.icon size={28} className="text-primary" />
               </div>
               <div>
                 <p className="font-display font-semibold text-lg">{item.title}</p>
                 {item.text.split("\n").map((line, j) => (
-                  <p key={j} className="text-muted-foreground font-body">{line}</p>
+                  <p key={j} className="text-muted-foreground font-body text-sm">{line}</p>
                 ))}
               </div>
             </a>
