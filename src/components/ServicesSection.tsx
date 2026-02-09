@@ -1,29 +1,36 @@
 import serviceSopra from "@/assets/service-soprastruttura.jpg";
 import serviceSotto from "@/assets/service-sottostruttura.jpg";
 import serviceScavi from "@/assets/service-scavi.jpg";
-import { Building2, Layers, Shovel } from "lucide-react";
+import { Building2, Layers, Shovel, Hammer } from "lucide-react";
 
 const services = [
   {
     icon: Building2,
-    title: "Costruzioni Sopra Struttura",
+    title: "Costruzioni di Sovrastruttura",
     description:
-      "Realizziamo edifici residenziali, commerciali e industriali con tecniche all'avanguardia e materiali di prima qualità.",
+      "Realizzazione di elementi costruttivi al di sopra di strutture esistenti, garantendo solidità, precisione e rispetto delle normative vigenti.",
     image: serviceSopra,
   },
   {
     icon: Layers,
-    title: "Costruzioni Sotto Struttura",
+    title: "Costruzioni di Sottostruttura",
     description:
-      "Fondazioni, muri di sostegno e lavori interrati eseguiti con la massima cura per garantire solidità e durabilità.",
+      "Esecuzione di opere interrate come tubazioni per l'alloggio di cavi elettrici e telefonici, reti per l'acqua potabile e canalizzazioni, con particolare attenzione alla durabilità e alla sicurezza.",
     image: serviceSotto,
   },
   {
     icon: Shovel,
-    title: "Scavi e Riattazioni",
+    title: "Scavi e Movimenti Terra",
     description:
-      "Movimenti terra, scavi di ogni genere e riattazioni complete per dare nuova vita agli edifici esistenti.",
+      "Lavori di scavo, sbancamento e livellamento del terreno per la realizzazione di costruzioni interrate o altre esigenze edilizie, eseguiti nel pieno rispetto delle normative ambientali e di sicurezza.",
     image: serviceScavi,
+  },
+  {
+    icon: Hammer,
+    title: "Riattazioni e Ristrutturazioni",
+    description:
+      "Interventi di riattazione e ristrutturazione per modernizzare edifici esistenti, migliorare funzionalità, estetica e comfort, o aggiornare singoli elementi strutturali.",
+    image: serviceSopra,
   },
 ];
 
@@ -45,7 +52,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <div
               key={i}
