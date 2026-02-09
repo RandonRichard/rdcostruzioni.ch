@@ -4,12 +4,14 @@ import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FloatingElements from "@/components/FloatingElements";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingElements />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <AboutSection />
         <ServicesSection />
