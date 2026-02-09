@@ -15,8 +15,8 @@ const HeroSection = () => {
           alt="Cantiere di costruzione moderno in Svizzera"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-foreground/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
       </div>
 
       {/* Content */}
@@ -24,11 +24,11 @@ const HeroSection = () => {
         <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-6">
           Impresa Costruzioni SAGL — Ticino
         </p>
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6">
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-white">
           Precisione ed{" "}
           <span className="text-gradient-gold">Affidabilità</span>
         </h1>
-        <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body">
+        <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body">
           Un'impresa ticinese giovane e dinamica, specializzata in costruzioni
           sopra e sotto struttura, scavi e riattazioni.
         </p>
@@ -41,7 +41,7 @@ const HeroSection = () => {
           </button>
           <button
             onClick={scrollToServices}
-            className="border border-border text-foreground px-8 py-3.5 rounded-md font-medium text-base hover:bg-secondary transition-all"
+            className="border border-white/30 text-white px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-all"
           >
             I Nostri Servizi
           </button>
@@ -51,7 +51,7 @@ const HeroSection = () => {
       {/* Scroll indicator */}
       <button
         onClick={scrollToServices}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce"
       >
         <ArrowDown size={24} />
       </button>
