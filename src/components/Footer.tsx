@@ -11,8 +11,19 @@ const Footer = () => {
             <span className="text-xs font-medium text-muted-foreground tracking-widest">TICINO</span>
           </span>
         </div>
-        <p className="text-muted-foreground text-sm font-body">
+
+        <p className="text-muted-foreground text-sm font-body text-center md:text-right">
           © {new Date().getFullYear()} RD Impresa Costruzioni SAGL — Tutti i diritti riservati
+          <br />
+          Developed by{" "}
+          <a
+            href="https://studio.grueninger-randon.ch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground"
+          >
+            RRG Web Studio
+          </a>
         </p>
       </div>
     </footer>
