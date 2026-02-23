@@ -15,7 +15,7 @@ const Footer = () => {
         <p className="text-muted-foreground text-sm font-body text-center md:text-right">
           © {new Date().getFullYear()} RD Impresa Costruzioni SAGL — Tutti i diritti riservati
           <br />
-          Developed by{" "}
+          Sviluppato da{" "}
           <a
             href="https://studio.grueninger-randon.ch/"
             target="_blank"
