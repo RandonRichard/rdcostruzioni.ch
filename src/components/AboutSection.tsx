@@ -69,7 +69,7 @@ const AboutSection = () => {
         >
           Un'impresa ticinese dove{" "}
           <em className="not-italic text-gradient-gold">precisione</em> e
-          affidabilità non sono parole — sono il fondamento di ogni progetto che
+          affidabilità non sono parole, sono il fondamento di ogni progetto che
           realizziamo.
         </blockquote>
 

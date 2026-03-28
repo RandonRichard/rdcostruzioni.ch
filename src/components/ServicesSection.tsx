@@ -2,7 +2,7 @@ import serviceSopra from "@/assets/service-soprastruttura-new.jpg";
 import serviceSotto from "@/assets/service-sottostruttura-new.jpg";
 import serviceScavi from "@/assets/service-scavi-new.jpg";
 import serviceRiattazioni from "@/assets/service-riattazioni.jpg";
-import { Building2, Layers, Shovel, Hammer, ArrowRight } from "lucide-react";
+import { Building2, Layers, Shovel, Hammer } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const services = [
@@ -97,10 +97,6 @@ const ServiceStrip = ({
           {service.description}
         </p>
 
-        <div className="mt-8 flex items-center gap-2 text-primary/40 text-[10px] font-body uppercase tracking-[0.4em] group-hover:text-primary transition-colors duration-300">
-          <ArrowRight size={11} />
-          Scopri di più
-        </div>
       </div>
     </div>
   );
