@@ -1,7 +1,7 @@
-import { Smartphone, MapPin, Mail } from "lucide-react";
+import { Smartphone, MapPin, Mail, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-const contactCards = [
+const contactItems = [
   {
     icon: Smartphone,
     title: "Cellulare",
@@ -17,52 +17,85 @@ const contactCards = [
   {
     icon: MapPin,
     title: "Sede",
-    text: "Via Campagnora 23\n6532 Castione",
+    text: "Via Campagnora 23, 6532 Castione",
     href: "https://maps.google.com/?q=Via+Campagnora+23,+6532+Castione",
   },
 ];
 
-const ContactSection = () => {
-  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal(0.2);
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal(0.1);
+const ContactLine = ({
+  item,
+  index,
+}: {
+  item: (typeof contactItems)[0];
+  index: number;
+}) => {
+  const { ref, isVisible } = useScrollReveal(0.05);
 
   return (
-    <section id="contatti" className="section-padding">
-      <div className="max-w-4xl mx-auto">
-        <div ref={headerRef} className={`text-center mb-16 section-reveal ${headerVisible ? "visible" : ""}`} style={{ transformOrigin: "center" }}>
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
+    <a
+      ref={ref}
+      href={item.href}
+      target={item.href.startsWith("http") ? "_blank" : undefined}
+      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+      className={`group flex items-center justify-between py-7 border-b border-white/10 last:border-0 hover:pl-3 transition-all duration-300 card-reveal reveal-delay-${index + 1} ${isVisible ? "visible" : ""}`}
+    >
+      <div className="flex items-start gap-6 md:gap-10">
+        <span className="text-white/20 text-[10px] font-body uppercase tracking-[0.4em] pt-1 shrink-0 hidden sm:block">
+          0{index + 1}
+        </span>
+        <div>
+          <p className="text-white/30 text-[10px] font-body uppercase tracking-[0.4em] mb-2">
+            {item.title}
+          </p>
+          <p
+            className="font-display font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight"
+            style={{ fontSize: "clamp(1.25rem, 3.5vw, 2.6rem)" }}
+          >
+            {item.text}
+          </p>
+        </div>
+      </div>
+      <div className="text-white/20 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 shrink-0 ml-4">
+        <ArrowRight size={18} />
+      </div>
+    </a>
+  );
+};
+
+const ContactSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal(0.15);
+
+  return (
+    <section id="contatti" className="bg-foreground text-white">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 py-28">
+        {/* Header */}
+        <div
+          ref={headerRef}
+          className={`mb-16 section-reveal ${headerVisible ? "visible" : ""}`}
+        >
+          <p className="text-primary font-body text-[10px] tracking-[0.6em] uppercase mb-12">
             Contatti
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <h2
+            className="font-display font-bold leading-[0.92] text-white"
+            style={{ fontSize: "clamp(2.6rem, 7vw, 5.5rem)" }}
+          >
             Parliamo del tuo{" "}
-            <span className="text-gradient-gold">progetto</span>
+            <em className="not-italic text-gradient-gold">progetto</em>.
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Contattaci per un preventivo gratuito o per discutere delle tue esigenze.
-          </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {contactCards.map((item, i) => (
-            <a
-              key={i}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className={`card-glass rounded-lg aspect-square flex flex-col items-center justify-center text-center gap-4 hover:border-primary/40 transition-colors group card-reveal reveal-delay-${i + 1} ${cardsVisible ? "visible" : ""}`}
-            >
-              <div className="bg-primary/10 p-4 rounded-md group-hover:bg-primary/20 transition-colors">
-                <item.icon size={28} className="text-primary" />
-              </div>
-              <div>
-                <p className="font-display font-semibold text-lg">{item.title}</p>
-                {item.text.split("\n").map((line, j) => (
-                  <p key={j} className="text-muted-foreground font-body text-sm">{line}</p>
-                ))}
-              </div>
-            </a>
+        {/* Contact lines */}
+        <div className="border-t border-white/10">
+          {contactItems.map((item, i) => (
+            <ContactLine key={i} item={item} index={i} />
           ))}
         </div>
+
+        <p className="mt-14 text-white/25 font-body text-sm leading-relaxed max-w-sm">
+          Disponibili in tutto il Canton Ticino. Preventivo gratuito e senza
+          impegno.
+        </p>
       </div>
     </section>
   );

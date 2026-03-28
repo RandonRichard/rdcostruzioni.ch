@@ -1,13 +1,6 @@
-import { CheckCircle2 } from "lucide-react";
+import React from "react";
 import { useCountUp } from "@/hooks/use-count-up";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-
-const values = [
-  "Qualità dei materiali e delle lavorazioni",
-  "Rispetto dei tempi di consegna",
-  "Trasparenza e comunicazione continua",
-  "Sostenibilità e rispetto ambientale",
-];
 
 const stats = [
   { value: 150, suffix: "+", label: "Progetti Completati" },
@@ -15,7 +8,26 @@ const stats = [
   { value: 100, suffix: "%", label: "Clienti Soddisfatti" },
 ];
 
-const StatCard = ({ value, suffix, label, index }: { value: number; suffix: string; label: string; index: number }) => {
+const values = [
+  "Qualità dei materiali",
+  "Rispetto dei tempi",
+  "Trasparenza totale",
+  "Sostenibilità",
+  "Precisione svizzera",
+  "Affidabilità",
+];
+
+const StatItem = ({
+  value,
+  suffix,
+  label,
+  index,
+}: {
+  value: number;
+  suffix: string;
+  label: string;
+  index: number;
+}) => {
   const { count, ref: countRef } = useCountUp(value);
   const { ref: revealRef, isVisible } = useScrollReveal(0.1);
 
@@ -25,55 +37,60 @@ const StatCard = ({ value, suffix, label, index }: { value: number; suffix: stri
         (revealRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
         (countRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
-      className={`card-glass rounded-lg p-8 text-center hover-lift relative stat-spark card-reveal reveal-delay-${index + 1} ${isVisible ? "visible" : ""}`}
+      className={`px-0 md:px-8 border-r border-border/50 last:border-0 first:pl-0 card-reveal reveal-delay-${index + 1} ${isVisible ? "visible" : ""}`}
     >
-      <p className="text-4xl md:text-5xl font-display font-bold text-gradient-gold mb-2">
-        {count}{suffix}
+      <p
+        className="font-display font-bold text-gradient-gold leading-none mb-3"
+        style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
+      >
+        {count}
+        {suffix}
       </p>
-      <p className="text-muted-foreground text-sm font-body">{label}</p>
+      <p className="text-muted-foreground text-[10px] font-body uppercase tracking-[0.4em]">
+        {label}
+      </p>
     </div>
   );
 };
 
 const AboutSection = () => {
-  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal(0.2);
-  const { ref: listRef, isVisible: listVisible } = useScrollReveal<HTMLUListElement>(0.1);
+  const { ref: quoteRef, isVisible: quoteVisible } = useScrollReveal(0.15);
 
   return (
-    <section id="chi-siamo" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <div ref={headerRef} className={`section-reveal ${headerVisible ? "visible" : ""}`}>
-            <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-3">
-              Chi Siamo
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Un'impresa che costruisce{" "}
-              <span className="text-gradient-gold">fiducia</span>
-            </h2>
-            <p className="text-muted-foreground text-lg font-body leading-relaxed mb-8">
-              RD Impresa Costruzioni SAGL è un'impresa ticinese giovane e dinamica
-              che fa della precisione e dell'affidabilità i suoi punti di forza.
-              Operiamo su tutto il territorio del Canton Ticino con passione e
-              competenza.
-            </p>
-          </div>
-          <ul ref={listRef} className="space-y-4">
-            {values.map((v, i) => (
-              <li
-                key={i}
-                className={`flex items-center gap-3 card-reveal reveal-delay-${i + 1} ${listVisible ? "visible" : ""}`}
-              >
-                <CheckCircle2 size={20} className="text-primary flex-shrink-0" />
-                <span className="text-foreground font-body">{v}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <section id="chi-siamo" className="bg-background">
+      {/* Manifesto */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
+        <p className="text-primary font-body text-[10px] tracking-[0.6em] uppercase mb-14">
+          Chi Siamo
+        </p>
+        <blockquote
+          ref={quoteRef}
+          className={`font-display text-2xl md:text-4xl lg:text-[2.8rem] font-bold leading-[1.15] max-w-4xl mb-24 text-foreground section-reveal ${quoteVisible ? "visible" : ""}`}
+        >
+          Un'impresa ticinese dove{" "}
+          <em className="not-italic text-gradient-gold">precisione</em> e
+          affidabilità non sono parole — sono il fondamento di ogni progetto che
+          realizziamo.
+        </blockquote>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {/* Stats row */}
+        <div className="grid grid-cols-3 border-t border-border/50 pt-16 gap-y-10">
           {stats.map((stat, i) => (
-            <StatCard key={i} {...stat} index={i} />
+            <StatItem key={i} {...stat} index={i} />
+          ))}
+        </div>
+      </div>
+
+      {/* Values marquee — dark strip */}
+      <div className="bg-foreground py-5 overflow-hidden">
+        <div className="flex gap-14 animate-marquee whitespace-nowrap">
+          {[...values, ...values, ...values, ...values].map((v, i) => (
+            <span
+              key={i}
+              className="text-white/25 text-[10px] font-body uppercase tracking-[0.5em] flex items-center gap-5 shrink-0"
+            >
+              <span className="text-primary/50">◆</span> {v}
+            </span>
           ))}
         </div>
       </div>

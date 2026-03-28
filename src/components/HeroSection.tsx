@@ -1,60 +1,90 @@
 import heroImage from "@/assets/hero-construction.jpg";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
-  const scrollToServices = () => {
-    document.querySelector("#servizi")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = (id: string) =>
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-end overflow-hidden"
+      style={{ clipPath: "polygon(0 0, 100% 0, 100% 95%, 0 100%)" }}
+    >
       {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Cantiere di costruzione moderno in Svizzera"
+          alt="Cantiere RD Costruzioni Ticino"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-foreground/90 via-foreground/70 to-foreground/45" />
+      </div>
+
+      {/* Giant decorative "RD" */}
+      <div
+        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <span
+          className="font-display font-bold leading-none block"
+          style={{ fontSize: "38vw", color: "rgba(212, 160, 23, 0.055)" }}
+        >
+          RD
+        </span>
+      </div>
+
+      {/* Vertical side text */}
+      <div
+        className="absolute right-10 top-0 bottom-0 hidden lg:flex flex-col items-center justify-center gap-6 pointer-events-none"
+        aria-hidden="true"
+      >
+        <span className="writing-vertical text-white/20 text-[9px] tracking-[0.7em] uppercase font-body">
+          Canton Ticino — Svizzera
+        </span>
+        <div className="w-px h-20 bg-primary/30" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center animate-slide-up">
-        <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-6">
-          RD Impresa Costruzioni SAGL — Ticino
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 pb-36 pt-40">
+        <p
+          className="text-primary font-body text-[10px] tracking-[0.6em] uppercase mb-10 animate-slide-up"
+        >
+          RD Impresa Costruzioni SAGL — Ticino, Svizzera
         </p>
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-white">
-          Precisione ed{" "}
-          <span className="text-gradient-gold">Affidabilità</span>
+
+        <h1
+          className="font-display font-bold leading-[0.88] text-white mb-14 animate-slide-up"
+          style={{
+            fontSize: "clamp(3.5rem, 10.5vw, 9.5rem)",
+            animationDelay: "0.1s",
+          }}
+        >
+          Precisione
+          <br />
+          <em className="not-italic text-gradient-gold">ed</em>
+          <br />
+          Affidabilità.
         </h1>
-        <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body">
-          Un'impresa ticinese giovane e dinamica, specializzata in costruzioni
-          sopra e sotto struttura, scavi e riattazioni.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+        <div
+          className="flex flex-col sm:flex-row gap-5 animate-slide-up"
+          style={{ animationDelay: "0.22s" }}
+        >
           <button
-            onClick={() => document.querySelector("#contatti")?.scrollIntoView({ behavior: "smooth" })}
-            className="bg-primary text-primary-foreground px-8 py-3.5 rounded-md font-medium text-base hover:brightness-110 transition-all"
+            onClick={() => scrollTo("#contatti")}
+            className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-[11px] font-body font-medium tracking-[0.25em] uppercase hover:bg-amber-600 transition-colors self-start"
           >
-            Richiedi Preventivo
+            Richiedi Preventivo <ArrowRight size={12} />
           </button>
           <button
-            onClick={scrollToServices}
-            className="border border-white/30 text-white px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-all"
+            onClick={() => scrollTo("#servizi")}
+            className="inline-flex items-center gap-3 text-white/45 text-[11px] font-body tracking-[0.25em] uppercase hover:text-primary transition-colors py-4 self-start"
           >
-            I Nostri Servizi
+            Scopri i Servizi <ArrowDown size={12} className="animate-bounce" />
           </button>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <button
-        onClick={scrollToServices}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce"
-      >
-        <ArrowDown size={24} />
-      </button>
     </section>
   );
 };
